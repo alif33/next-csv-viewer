@@ -1,14 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
+import Cookies from 'universal-cookie';
+import { useRouter } from 'next/router';
 
 
 const Home = ({ children }) => {
-
-    // const navigate = useNavigate();
+    const cookie = new Cookies();
+    const router = useRouter();
 
     const LogoutHandler = () => {
-        // localStorage.removeItem("__key__");
-        // navigate('/login')
+        cookie.remove('__token__', { path: '/' });
+        router.push("/login")
     }
 
     return (

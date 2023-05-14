@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import AnimatedTitle from '@/components/AnimatedTitle';
 import HashLoader from 'react-spinners/HashLoader';
+import { requireAuth } from '@/lib/guards';
 import Layout from '@/components/Layout';
 import Axios from '@/helpers/Axios';
 import _ from 'lodash';
@@ -121,3 +122,7 @@ const Home = () => {
 };
 
 export default Home;
+
+export const getServerSideProps = requireAuth(async (context) =>{
+    return  {props: {}}
+})
